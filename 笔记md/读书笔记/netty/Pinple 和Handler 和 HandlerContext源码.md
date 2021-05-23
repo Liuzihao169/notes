@@ -216,5 +216,4 @@ public final ChannelPipeline addLast(EventExecutorGroup group, String name, Chan
 
   ![image-20210523103640559](https://gitee.com/liuzihao169/pic/raw/master/image/20210523103642.png)
 
-  是否传递到下一个Handler取决于当前handler是否执行了`ctx.fireChannelRead(msg);`
-
+  是否传递到下一个Handler取决于当前handler是否执行了`ctx.fireChannelRead(msg); `
