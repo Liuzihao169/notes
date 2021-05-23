@@ -203,6 +203,7 @@ public final ChannelPipeline addLast(EventExecutorGroup group, String name, Chan
   @Override
     public ChannelHandlerContext fireChannelRead(final Object msg) {
         // 找到入站handler，执行invokeChannelRead方法，这也就回到了我们第一步的方法，形成了闭环。
+        //
         invokeChannelRead(findContextInbound(MASK_CHANNEL_READ), msg);
         return this;
     }
