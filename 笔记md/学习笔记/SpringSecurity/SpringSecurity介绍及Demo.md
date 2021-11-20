@@ -67,6 +67,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                // 登录请求
                .loginProcessingUrl("/login")
                // 成功访问页面
+         			 // 但是实际上前后端分离的项目，并不能直接跳转，可以定义个登录成功的json信息返回给前端
                .defaultSuccessUrl("/index")
                .permitAll()
                 // 不拦截请求
@@ -169,6 +170,27 @@ public class MyUserServiceDetails implements UserDetailsService {
     }
 ```
 
+##### 2.4 多因子认证
+
+![image-20210627095428667](https://gitee.com/liuzihao169/pic/raw/master/image/20210627095440.png)
+
+##### 2.5 令牌
+
+![image-20210627111702777](https://gitee.com/liuzihao169/pic/raw/master/image/20210627111705.png)
+
+刷新令牌的作用是为了获取到一个新的令牌；
+
+##### 2.6 JWT登录访问控制：
+
+1、登录发放token:
+
+因为前后端分离项目，其实可以不采用Springsecurity内置的登录过滤，因为太重量级了，可以采用和前端直接交互的方式，后段校验通过后直接颁发一个token信息，该处理方式，轻量级，快捷。
+
+登录校验token方式：
+
+2、继承BasicAuthenticationFilter 判断token是否存在，如果存在解析token生成一个UsernamePasswordAuthenticationToken 认证信息(进行了进行授权，默认设置了认证为true)
+
+3、刷新token
 
 
 #### 代码地址：
